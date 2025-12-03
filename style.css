@@ -1,23 +1,17 @@
-/* @font-face {
-    font-family: "Poppins";
-    src: url("assets/fonts/Poppins-Black.ttf") format("truetype");
-    font-weight: 900;
-    font-style: normal;
-}
-@font-face {
-    font-family: "Poppins";
-    src: url("assets/fonts/Poppins-BlackItalic.ttf") format("truetype");
-    font-weight: 900;
-    font-style: italic;
-} */
-
-/* Poppins Light */
+/*Poppins Light*/
 @font-face {
   font-family: "Poppins";
   src: url("assets/fonts/Poppins-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
+@font-face {
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -69,12 +63,17 @@ nav button {
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
-  transition: 0.3s ease;
-}
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 2s ease;
+  /* transition: 0.3s ease; */
 
-nav button:hover {
-  background-color: rgb(7, 6, 66);
 }
+nav button:hover{
+    transform: scale(1.05);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+/* nav button:hover {
+  background-color: rgb(7, 6, 66);
+} */
 main {
   height: 400px;
   padding: 0px;
@@ -88,9 +87,9 @@ main {
   background-size: cover;
   background-position: center;
 }
-H1 {
+#H1 {
   /* color: rgb(146, 88, 227); */
-  color: rgb(103, 37, 209);
+  color: rgb(102, 45, 195);
 }
 
 main button {
@@ -170,7 +169,7 @@ header button {
   font-size: 20px;
   background-color: transparent;
   border: 2px solid rgb(10, 8, 94);
-  color: rgb(10, 8, 94);
+  color: rgb(32, 28, 118);
   border-radius: 30px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
@@ -183,7 +182,16 @@ header button {
 
 .confed {
   background-image: url("assets/task_01kbg0v95gf0hv09ywwq3qvh2s_1764695615_img_0.webp");
-  height: 300px;
+  height: 750px;
+
+  position: relative;
+
+  background-size: cover;
+  margin-top: 30px;
+  background-position: center 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 /* Capsule Button Style (Reusable) */
 .capsule-btn {
@@ -201,4 +209,165 @@ header button {
 .capsule-btn:hover {
   background-color: rgba(10, 8, 94, 0.12); /* soft capsule bg */
   transform: translateY(-2px); /* slight lift */
+}
+#conf-kid1 {
+  width: 500px;
+  height: auto;
+  /* background-color: aqua; */
+}
+#conf-kid1 h1 span{
+    /* font-family: "Playfair Display", serif; */
+    /* font-family: "Great Vibes", cursive; */
+    /* font-family: "Dancing Script", cursive; */
+/* font-family: "Allura", cursive; */
+/* font-family: "Parisienne", cursive; */
+font-family: "Cormorant Garamond", serif;
+
+
+
+}
+#conf-kid2 {
+  background-color: transparent;
+  color: rgb(102, 45, 195);
+  border: 2px solid black;
+  border-radius: 50px;
+  width: 800px;
+  position: relative;
+  left: 150px;
+  bottom: 20px;
+  padding: 40px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#conf-h1 {
+  font-size: 70px;
+  margin-left: 40px;
+  font-family: "Poppins";
+  font-style: italic;
+  color: rgb(102, 45, 195);
+}
+#confed2 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 200px;
+  right: 100px;
+}
+#conf-kid2 p {
+  font-size: 30px;
+}
+#conf-kid2 button {
+  color: rgb(57, 23, 120);
+  margin-top: 20px;
+  font-size: 30px;
+  background-color: transparent;
+  border-radius: 30px;
+  border: 2px solid black;
+  width: 250px;
+  height: 50px;
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center; /* vertical */
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+#conf-kid2 button:hover {
+  background-color: rgba(10, 8, 94, 0.12); /* soft capsule bg */
+  transform: translateY(-2.5px); /* slight lift */
+}
+#val-rec {
+  font-size: 40px;
+  position: absolute;
+  top: 50px;
+}
+#joinengage {
+  background-image: url(assets/vase.png);
+  width: 100%;
+  position: relative;
+  height: 800px;
+}
+#member{
+    border: 2px solid black;
+    width: 300px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+#callhead {
+  display: flex;
+  height: 350px;
+  background-position: center 20%;
+  width: 650px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  left: 100px;
+  top: 50px;
+
+  border: 2px solid black;
+  border-radius: 100px;
+}
+#callhead {
+  padding: 20px;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#callhead p {
+  font-size: 20px;
+  text-align: center;
+}
+#call1 {
+  text-align: center;
+}
+#callhead:hover {
+  background-color: rgba(10, 8, 94, 0.12);
+  transform: translateY(-5px);
+  transition: 0.5s ease-in-out;
+  transform: scale(1.05); /* enlarge button */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+#callhead button {
+  margin-top: 20px;
+  font-size: 20px;
+  border: 2px solid black;
+  width: 250px;
+  border-radius: 15px;
+  background-color: rgb(10, 8, 94);
+  color: white;
+  cursor: pointer;
+transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 2s ease;
+
+}
+#callhead button:hover{
+    /* background-color: rgba(10, 8, 94, 0.12); */
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+#member {
+    position: absolute;
+    top: 450px;
+    left: 100px;   /* ← THIS semicolon was missing */
+    /* background-color: rgb(10, 8, 94); */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 2s ease;
+}
+
+#member:hover{
+     transform: scale(1.05); /* enlarge button */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+#changingWords {
+  font-size: 40px;
+  color: rgb(105, 30, 192);
+  opacity: 0;
+  transition: opacity 1.5s ease; /* slow fade */
+  margin-top: 10px;
 }
