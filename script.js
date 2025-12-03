@@ -20,6 +20,3 @@ function cycleWords() {
         cycleWords(); // repeat
     }, 2500);
 }
-
-// Start cycle
-cycleWords();
