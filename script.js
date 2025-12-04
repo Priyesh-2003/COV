@@ -20,6 +20,50 @@ function cycleWords() {
         cycleWords(); // repeat
     }, 2500);
 }
+cycleWords(); 
+const counters = document.querySelectorAll('.counter');
+let started = false;
 
-// Start cycle
-cycleWords();
+function easeOut(current, target) {
+    let progress = current / target;
+    let eased = 1 - Math.pow(1 - progress, 3);
+    return eased * target;
+}
+
+function startCount() {
+    counters.forEach(counter => {
+        let target = +counter.getAttribute('data-target');
+        let isBig = target > 1000;
+        let duration = isBig ? 1800 : 1200;
+        let startTime = null;
+
+        function animate(time) {
+            if (!startTime) startTime = time;
+            let elapsed = time - startTime;
+            let progress = Math.min(elapsed / duration, 1);
+
+            if (isBig) {
+                counter.innerText = Math.ceil(easeOut(progress * target, target));
+            } else {
+                counter.innerText = Math.ceil(progress * target);
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                counter.innerText = target;
+            }
+        }
+
+        requestAnimationFrame(animate);
+    });
+}
+
+window.addEventListener('scroll', () => {
+    let section = document.getElementById('vimpactc');
+    let position = section.getBoundingClientRect().top;
+    if (position < window.innerHeight - 100 && !started) {
+        started = true;
+        startCount();
+    }
+});
