@@ -293,6 +293,15 @@ header button {
   flex-direction: column;
   text-align: center;
 }
+
+#cont3 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 #callhead {
   display: flex;
   height: 350px;
@@ -427,27 +436,42 @@ header button {
   transform: scale(1.05);
   box-shadow: 0 10px 25px rgba(32, 44, 54, 0.25);
 }
-#vimpact {
-  background-image: url("assets/pair2.png");
-  height: 500px;
+#cont4 {
+  height: 400px;
+
+  position: relative;
+
   background-size: cover;
-  background-position: center 40%;
+  margin-top: 30px;
+  background-position: center 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("assets/pair2.png");
+}
+#vimpact {
+  height: 500px;
+  /* background-size: cover; */
+  /* background-position: center 40%; */
   padding-top: 50px;
   position: relative;
+  /* width: 100%; */
+  width: 100%;
 }
 #vimpact h1 {
-  font-size: 60px;
+  font-size: 40px;
   text-align: center;
   color: rgb(116, 64, 164);
 }
 #vimpactc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0px;
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
   font-size: 30px;
-  position: absolute;
-  top: 250px;
-  color: rgb(76, 36, 114);
+  margin-top: 20px;
 }
 #vimpact div {
   text-align: center;
@@ -465,7 +489,7 @@ header button {
 }
 
 #osp h1 {
-  font-size: 60px;
+  font-size: 40px;
   color: rgb(127, 86, 165);
   margin-bottom: 50px;
   z-index: 10;
