@@ -154,10 +154,7 @@ header button {
   transform: translateY(-2px);
 }
 
-.confed {
-  background-image: url("assets/task_01kbg0v95gf0hv09ywwq3qvh2s_1764695615_img_0.webp");
-  height: 300px;
-}
+
 /* Capsule Button Style (Reusable) */
 .capsule-btn {
   padding: 12px 28px;
@@ -314,7 +311,7 @@ header button {
 .story-text {
   font-size: 1.2em;
   line-height: 1.9;
-  text-align: center;
+  text-align: justify;
   margin-bottom: 30px;
   opacity: 0;
   animation: fadeIn 1s forwards;
@@ -812,3 +809,6 @@ header button {
     width: 100%;
   }
 }
+
+
+
