@@ -1,23 +1,15 @@
-/* @font-face {
-    font-family: "Poppins";
-    src: url("assets/fonts/Poppins-Black.ttf") format("truetype");
-    font-weight: 900;
-    font-style: normal;
-}
-@font-face {
-    font-family: "Poppins";
-    src: url("assets/fonts/Poppins-BlackItalic.ttf") format("truetype");
-    font-weight: 900;
-    font-style: italic;
-} */
-
-/* Poppins Light */
 @font-face {
   font-family: "Poppins";
   src: url("assets/fonts/Poppins-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  /* padding: 0 20px; */
+}
+
 
 :root {
   --primary: #002b5b; /* Deep Navy */
@@ -38,8 +30,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  /* padding: 20px 40px; */
   background-color: var(--soft-bg);
+  width: 100%;
 }
 
 nav a {
@@ -154,7 +147,6 @@ header button {
   transform: translateY(-2px);
 }
 
-
 /* Capsule Button Style (Reusable) */
 .capsule-btn {
   padding: 12px 28px;
@@ -268,11 +260,6 @@ header button {
    SECTION CONTAINER
 -------------------------- */
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
 
 /* -------------------------
    OUR STORY SECTION
@@ -329,8 +316,9 @@ header button {
 -------------------------- */
 
 .mission-vision {
-  padding: 100px 20px;
+  padding: 100px 0px;
   background: white;
+  width: 100%;
 }
 
 /* Layout */
@@ -340,8 +328,9 @@ header button {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto 120px;
+  width: 100%;
 }
 
 .vision-container {
@@ -557,12 +546,15 @@ header button {
     font-size: 1.1em;
   }
 
-  .mission-container,
-  .vision-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    margin-bottom: 80px;
-  }
+ .mission-container,
+.vision-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 120px;
+}
 
   .mission-visual,
   .vision-visual {
@@ -715,6 +707,14 @@ header button {
 /* ==========================
    CONTACT COLUMN
 ========================== */
+/* .wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+.content {
+  width: 100%;
+  margin: 0 auto;
+} */
 
 .office-title {
   color: var(--highlight);
@@ -809,6 +809,3 @@ header button {
     width: 100%;
   }
 }
-
-
-
