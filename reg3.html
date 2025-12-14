@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>COV Registration - Work Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d4d6d 0%, #1a7a9e 50%, #4db8b8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 1600px;
+            width: 100%;
+            padding: 40px;
+            max-width: 1600px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0d4d6d;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 12px 28px;
+            border: none;
+            background: #e8e8e8;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: white;
+            box-shadow: 0 4px 12px rgba(29, 122, 158, 0.3);
+        }
+
+        .tab:hover:not(.active) {
+            background: #d5d5d5;
+        }
+
+        .content {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 35px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .experience-section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #1a7a9e;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0d4d6d;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4db8b8;
+        }
+
+        .experience-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .experience-table thead {
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+        }
+
+        .experience-table th {
+            padding: 12px 8px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .experience-table th:last-child {
+            border-right: none;
+        }
+
+        .experience-table tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .experience-table td {
+            padding: 12px 8px;
+            vertical-align: middle;
+        }
+
+        .experience-table select,
+        .experience-table input[type="text"] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .experience-table select:focus,
+        .experience-table input[type="text"]:focus {
+            outline: none;
+            border-color: #1a7a9e;
+            box-shadow: 0 0 0 2px rgba(26, 122, 158, 0.1);
+        }
+
+        .upload-btn {
+            padding: 8px 18px;
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 122, 158, 0.3);
+        }
+
+        .add-row-btn {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .add-row-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(26, 122, 158, 0.3);
+        }
+
+        .terms-section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #1a7a9e;
+            margin-bottom: 25px;
+        }
+
+        .terms-list {
+            list-style: none;
+            counter-reset: terms-counter;
+        }
+
+        .terms-list>li {
+            counter-increment: terms-counter;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .terms-list>li::before {
+            content: counter(terms-counter) ".";
+            font-weight: 600;
+            min-width: 20px;
+            color: #0d4d6d;
+        }
+
+        .terms-list .sub-list {
+            list-style: none;
+            counter-reset: sub-counter;
+            margin-top: 8px;
+            padding-left: 0;
+        }
+
+        .terms-list .sub-list li {
+            counter-increment: sub-counter;
+            margin-bottom: 8px;
+            font-size: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .terms-list .sub-list li::before {
+            content: counter(sub-counter, lower-alpha) ".";
+            font-weight: 600;
+            color: #1a7a9e;
+            min-width: 20px;
+        }
+
+        .no-counter {
+            counter-increment: none !important;
+        }
+
+        .no-counter::before {
+            content: none !important;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-left: auto;
+            min-width: 120px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #1a7a9e;
+        }
+
+        .radio-option label {
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .back-btn,
+        .next-btn {
+            padding: 14px 50px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #888, #666);
+            color: white;
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: white;
+        }
+
+        .back-btn:hover,
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .experience-table {
+                font-size: 11px;
+            }
+
+            .experience-table th,
+            .experience-table td {
+                padding: 8px 5px;
+            }
+
+            .terms-list>li {
+                flex-direction: column;
+            }
+
+            .radio-group {
+                margin-left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <img id='logo' src="assets/Logo.avif" height="70px" alt="">
+
+            </div>
+        </div>
+        <div class="tabs">
+            <a href='reg1.html' class="tab">Personal Details</a>
+            <a href='reg2.html' class="tab">Educational Details</a>
+            <button class="tab active">Work Experience</a>
+        </div>
+        <div class="content">
+            <!-- Work Experience Section -->
+            <div class="experience-section">
+                <h3 class="section-title">Work Experience</h3>
+                <table class="experience-table">
+                    <thead>
+                        <tr>
+                            <th>You are presently</th>
+                            <th>Total no. of years in practice/emp</th>
+                            <th>Period From</th>
+                            <th>Period To</th>
+                            <th>Employer</th>
+                            <th>Designation</th>
+                            <th>Area of Work</th>
+                            <th>Upload</th>
+                        </tr>
+                    </thead>
+                    <tbody id="experienceTableBody">
+                        <tr>
+                            <td>
+                                <select>
+                                    <option value="">Select</option>
+                                    <option value="employment">Employment</option>
+                                    <option value="practice">Practice</option>
+                                </select>
+                            </td>
+                            <td><input type="text" placeholder="Year"></td>
+                            <td><input type="text" placeholder="From"></td>
+                            <td><input type="text" placeholder="To"></td>
+                            <td><input type="text" placeholder="Employer"></td>
+                            <td><input type="text" placeholder="Designation"></td>
+                            <td><input type="text" placeholder="Area"></td>
+                            <td>
+                                <button class="upload-btn"
+                                    onclick="document.getElementById('expUpload1').click()">Upload</button>
+                                <input type="file" id="expUpload1" accept=".pdf,.jpg,.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select>
+                                    <option value="">Select</option>
+                                    <option value="employment">Employment</option>
+                                    <option value="practice">Practice</option>
+                                </select>
+                            </td>
+                            <td><input type="text" placeholder="Year"></td>
+                            <td><input type="text" placeholder="From"></td>
+                            <td><input type="text" placeholder="To"></td>
+                            <td><input type="text" placeholder="Employer"></td>
+                            <td><input type="text" placeholder="Designation"></td>
+                            <td><input type="text" placeholder="Area"></td>
+                            <td>
+                                <button class="upload-btn"
+                                    onclick="document.getElementById('expUpload2').click()">Upload</button>
+                                <input type="file" id="expUpload2" accept=".pdf,.jpg,.png">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="add-row-btn" onclick="addExperienceRow()">+ Add Row</button>
+            </div>
+            <!-- Terms Section -->
+            <div class="terms-section">
+                <h3 class="section-title">Terms</h3>
+
+                <ul class="terms-list">
+                    <li>
+                        <span>Have you every been Convicted for an offence?</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q1-yes" name="question1" value="yes">
+                                <label for="q1-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q1-no" name="question1" value="no" checked>
+                                <label for="q1-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Whether any criminal proceeding is initiated against you and is pending for disposal
+                            before the court of law? (excluding litigation of personal/ matrimonial nature)</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q2-yes" name="question2" value="yes">
+                                <label for="q2-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q2-no" name="question2" value="no" checked>
+                                <label for="q2-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Have you ever been declared as an undischarged bankrupt or applied to be adjudged as
+                            Bankrupt?</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q3-yes" name="question3" value="yes">
+                                <label for="q3-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q3-no" name="question3" value="no" checked>
+                                <label for="q3-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Have you ever been restrained by any public sector bank / any other institution to conduct
+                            valuation services and subsequently de-panelled from their panel</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q4-yes" name="question4" value="yes">
+                                <label for="q4-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q4-no" name="question4" value="no" checked>
+                                <label for="q4-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Whether any disciplinary proceeding are pending or any disciplinary action has been taken
+                            at any time in the preceding three years against you by the institution / body of which you
+                            are a member</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q5-yes" name="question5" value="yes">
+                                <label for="q5-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q5-no" name="question5" value="no" checked>
+                                <label for="q5-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Whether you had an unblemished service with the last employer in case of
+                            employment?</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q6-yes" name="question6" value="yes" checked>
+                                <label for="q6-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q6-no" name="question6" value="no">
+                                <label for="q6-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Whether your name appears in the database of MCA regarding:</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q7-yes" name="question7" value="yes">
+                                <label for="q7-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q7-no" name="question7" value="no" checked>
+                                <label for="q7-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="no-counter" style="margin-left: 35px;">
+                        <ul class="sub-list">
+                            <li>
+                                <span>Directors disqualified under section 164 of companies act 2013</span>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="q8a-yes" name="question8a" value="yes">
+                                        <label for="q8a-yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="q8a-no" name="question8a" value="no" checked>
+                                        <label for="q8a-no">No</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Proclaimed Offenders under section 82 of the code of Criminal Procedure,
+                                    1973?</span>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="q8b-yes" name="question8b" value="yes">
+                                        <label for="q8b-yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="q8b-no" name="question8b" value="no" checked>
+                                        <label for="q8b-no">No</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Whether you have been penalised by a market regulator (SEBI or CCI) in the last 3
+                            years?</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q9-yes" name="question9" value="yes">
+                                <label for="q9-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q9-no" name="question9" value="no" checked>
+                                <label for="q9-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Whether your name appears in the list of defaulters of RBI?</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q10-yes" name="question10" value="yes">
+                                <label for="q10-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q10-no" name="question10" value="no" checked>
+                                <label for="q10-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Any additional information that may be relevant for your application</span>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="q11-yes" name="question11" value="yes">
+                                <label for="q11-yes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="q11-no" name="question11" value="no" checked>
+                                <label for="q11-no">No</label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="action-buttons">
+                <button class="back-btn" onclick="goBack()">Back</button>
+                <button class="next-btn" onclick="submitForm()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let expRowCount = 2;
+
+        function addExperienceRow() {
+            expRowCount++;
+            const tbody = document.getElementById('experienceTableBody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>
+                    <select>
+                        <option value="">Select</option>
+                        <option value="employment">Employment</option>
+                        <option value="practice">Practice</option>
+                    </select>
+                </td>
+                <td><input type="text" placeholder="Year"></td>
+                <td><input type="text" placeholder="From"></td>
+                <td><input type="text" placeholder="To"></td>
+                <td><input type="text" placeholder="Employer"></td>
+                <td><input type="text" placeholder="Designation"></td>
+                <td><input type="text" placeholder="Area"></td>
+                <td>
+                    <button class="upload-btn" onclick="document.getElementById('expUpload${expRowCount}').click()">Upload</button>
+                    <input type="file" id="expUpload${expRowCount}" accept=".pdf,.jpg,.png">
+                </td>
+            `;
+            tbody.appendChild(newRow);
+        }
+
+        function goBack() {
+            alert('Returning to Educational Details');
+        }
+
+        function submitForm() {
+            // Collect all answers
+            const answers = {};
+            for (let i = 1; i <= 11; i++) {
+                const selected = document.querySelector(`input[name="question${i}"]:checked`);
+                if (selected) {
+                    answers[`question${i}`] = selected.value;
+                }
+            }
+
+            // Check sub-questions
+            const sub8a = document.querySelector('input[name="question8a"]:checked');
+            const sub8b = document.querySelector('input[name="question8b"]:checked');
+            if (sub8a) answers['question8a'] = sub8a.value;
+            if (sub8b) answers['question8b'] = sub8b.value;
+
+            console.log('Form submitted with answers:', answers);
+            alert('Registration form submitted successfully!');
+        }
+
+        document.querySelectorAll('.tab').forEach((tab, index) => {
+            tab.addEventListener('click', function () {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const sections = ['Personal Details', 'Educational Details', 'Work Experience'];
+                alert(`Switching to ${sections[index]}`);
+            });
+        });
+    </script>
+</body>
+
+</html>
