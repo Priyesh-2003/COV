@@ -8,6 +8,8 @@
   --text-dark: #012a4a;
   --white: #ffffff;
   --light-gray: #e8f4f8;
+    --hero-height: min(85vh, 600px);
+  --header-offset: 100px;
 }
 
 * {
@@ -24,11 +26,20 @@ body {
 }
 
 /* Header - FIXED CONSISTENT SPACING */
-header {
+/* header {
   background: var(--white);
   box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
   position: sticky;
   top: 0;
+  z-index: 1000;
+} */
+header {
+  background: transparent;
+  box-shadow: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 
@@ -146,14 +157,18 @@ nav a:hover {
   display: block;
   opacity: 1;
 }
-
+#set{
+  display: flex;
+  flex-direction: column;
+}
 /* Hero Section */
 .hero {
   position: relative;
   height: 85vh;
-  min-height: 600px;
+  /* min-height: 550px; */
   background: linear-gradient(135deg, var(--primary) 0%, #004080 100%);
   overflow: hidden;
+  max-height: 600px;
 }
 
 .hero-pattern {
@@ -197,7 +212,7 @@ nav a:hover {
   background-position: 0 0, 0 0, 40px 70px, 40px 70px;
 }
 
-.hero-content {
+/* .hero-content {
   position: relative;
   max-width: 1520px;
   margin: 0 auto;
@@ -205,10 +220,23 @@ nav a:hover {
   height: 100%;
   display: flex;
   align-items: center;
+} */
+.hero-content {
+  position: relative;
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 120px 40px 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  
 }
 
 .hero-text {
   max-width: 750px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .hero-text h1 {
@@ -290,7 +318,7 @@ nav a:hover {
 /* Quick Links Section */
 .quick-links {
   background: var(--white);
-  margin-top: -60px;
+  /* margin-top: -60px; */
   position: relative;
   z-index: 10;
 }
@@ -298,7 +326,7 @@ nav a:hover {
 .quick-links-container {
   max-width: 1520px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 20px 40px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
@@ -761,6 +789,7 @@ nav a:hover {
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .social-icons a:hover {

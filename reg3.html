@@ -5,99 +5,181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>COV Registration - Work Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+        :root {
+            --primary: #002b5b;
+            --accent-teal: #00a6a6;
+            --soft-bg: #f2f9ff;
+            --highlight: #38b6ff;
+            --text-dark: #012a4a;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html,
         body {
-            overflow-y: scroll;
-            overflow-x: hidden;
-        }
-
-        /* Chrome, Edge, Safari */
-        ::-webkit-scrollbar {
-            width: 0px;
-            height: 0px;
-        }
-
-        /* Firefox */
-        html {
-            scrollbar-width: none;
-        }
-
-        /* IE / old Edge */
-        body {
-            -ms-overflow-style: none;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0d4d6d 0%, #1a7a9e 50%, #4db8b8 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-
-            /* keep this */
-        }
-
-        /* 
-        html,
-        body {
-            height: auto;
+            padding-top: 100px;
             overflow-x: hidden;
-            overflow-y: auto;
-        } */
-
-
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 1600px;
-            width: 100%;
-            padding: 40px;
-            max-width: 1600px;
-
         }
 
-        .header {
+        /* ===== HEADER STYLES ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .cont1 {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 35px;
+            max-width: 1520px;
+            margin: 0 auto;
+            padding: 15px 40px;
         }
 
         #logo {
             cursor: pointer;
             transition: transform 0.3s ease;
+            height: 70px;
         }
 
         #logo:hover {
             transform: scale(1.05);
         }
 
-        .logo-text {
+        nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: rgb(10, 8, 94);
+            font-size: 18px;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background-color: rgba(10, 8, 94, 0.12);
+            transform: translateY(-2px);
+        }
+
+        nav button {
+            margin-left: 15px;
+            padding: 8px 16px;
+            background-color: rgb(10, 8, 94);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 1520px;
+            width: calc(100% - 80px);
+            margin: 20px auto 40px;
+            padding: 40px;
+        }
+
+        .page-title {
             font-size: 32px;
             font-weight: bold;
             color: #0d4d6d;
-        }
-
-        .subtitle {
-            font-size: 12px;
-            color: #666;
-            margin-top: 2px;
+            margin-bottom: 35px;
+            text-align: center;
         }
 
         .tabs {
             display: flex;
             gap: 10px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
         .tab {
@@ -105,7 +187,7 @@
             border: none;
             background: #e8e8e8;
             color: #666;
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 500;
             cursor: pointer;
             border-radius: 6px;
@@ -131,16 +213,17 @@
             border: 2px solid #e0e0e0;
         }
 
-        .experience-section {
+        .experience-section,
+        .terms-section {
             background: white;
             padding: 25px;
             border-radius: 8px;
             border: 2px solid #1a7a9e;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .section-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             color: #0d4d6d;
             margin-bottom: 20px;
@@ -151,59 +234,48 @@
         .experience-table {
             width: 100%;
             border-collapse: collapse;
-        }
-
-        .experience-table thead {
-            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            margin-bottom: 15px;
         }
 
         .experience-table th {
-            padding: 12px 8px;
-            text-align: left;
-            font-size: 11px;
-            font-weight: 600;
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
             color: white;
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .experience-table th:last-child {
-            border-right: none;
-        }
-
-        .experience-table tbody tr {
-            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 10px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
         }
 
         .experience-table td {
-            padding: 12px 8px;
-            vertical-align: middle;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        .experience-table select,
-        .experience-table input[type="text"] {
+        .experience-table input[type="text"],
+        .experience-table select {
             width: 100%;
             padding: 8px 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 13px;
-            transition: all 0.3s ease;
+            font-size: 18px;
             background: white;
+            transition: all 0.3s ease;
         }
 
-        .experience-table select:focus,
-        .experience-table input[type="text"]:focus {
+        .experience-table input[type="text"]:focus,
+        .experience-table select:focus {
             outline: none;
             border-color: #1a7a9e;
             box-shadow: 0 0 0 2px rgba(26, 122, 158, 0.1);
         }
 
         .upload-btn {
-            padding: 8px 18px;
+            padding: 8px 20px;
             background: linear-gradient(135deg, #1a7a9e, #4db8b8);
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 18px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -212,33 +284,24 @@
 
         .upload-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(26, 122, 158, 0.3);
+            box-shadow: 0 6px 16px rgba(26, 122, 158, 0.3);
         }
 
         .add-row-btn {
             padding: 10px 24px;
-            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
-            color: white;
-            border: none;
+            background: white;
+            color: #1a7a9e;
+            border: 2px solid #1a7a9e;
             border-radius: 5px;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 15px;
         }
 
         .add-row-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(26, 122, 158, 0.3);
-        }
-
-        .terms-section {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            border: 2px solid #1a7a9e;
-            margin-bottom: 25px;
+            background: #1a7a9e;
+            color: white;
         }
 
         .terms-list {
@@ -246,18 +309,18 @@
             counter-reset: terms-counter;
         }
 
-        .terms-list>li {
+        .terms-list > li {
             counter-increment: terms-counter;
             margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            font-size: 13px;
+            font-size: 18px;
             line-height: 1.6;
             color: #333;
         }
 
-        .terms-list>li::before {
+        .terms-list > li::before {
             content: counter(terms-counter) ".";
             font-weight: 600;
             min-width: 20px;
@@ -274,7 +337,7 @@
         .terms-list .sub-list li {
             counter-increment: sub-counter;
             margin-bottom: 8px;
-            font-size: 12px;
+            font-size: 18px;
             display: flex;
             align-items: flex-start;
             gap: 15px;
@@ -318,7 +381,7 @@
         }
 
         .radio-option label {
-            font-size: 12px;
+            font-size: 18px;
             font-weight: 500;
             cursor: pointer;
             color: #333;
@@ -327,7 +390,8 @@
         .action-buttons {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
+            margin-top: 25px;
+            gap: 15px;
         }
 
         .back-btn,
@@ -342,8 +406,14 @@
         }
 
         .back-btn {
-            background: linear-gradient(135deg, #888, #666);
-            color: white;
+            background: white;
+            color: #1a7a9e;
+            border: 2px solid #1a7a9e;
+        }
+
+        .back-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
         }
 
         .next-btn {
@@ -351,27 +421,146 @@
             color: white;
         }
 
-        .back-btn:hover,
         .next-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(26, 122, 158, 0.4);
         }
 
         input[type="file"] {
             display: none;
         }
 
-        @media (max-width: 768px) {
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
             .experience-table {
-                font-size: 11px;
+                font-size: 12px;
             }
 
             .experience-table th,
             .experience-table td {
-                padding: 8px 5px;
+                padding: 8px 6px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 85px;
             }
 
-            .terms-list>li {
+            .cont1 {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            #logo {
+                height: 50px;
+                z-index: 1001;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: stretch !important;
+                padding: 100px 30px 30px 30px;
+                gap: 0 !important;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav a {
+                width: 100%;
+                padding: 15px 20px;
+                margin: 5px 0;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: left;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, 0.1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px);
+            }
+
+            nav button {
+                width: 100% !important;
+                margin: 20px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                background-color: var(--accent-teal);
+                transition: all 0.3s ease;
+                display: block !important;
+            }
+
+            nav button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 166, 166, 0.3);
+            }
+
+            .container {
+                width: calc(100% - 40px);
+                padding: 30px 20px;
+            }
+
+            .page-title {
+                font-size: 28px;
+                margin-bottom: 25px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .experience-section,
+            .terms-section {
+                padding: 20px 15px;
+                overflow-x: auto;
+            }
+
+            .experience-table {
+                min-width: 600px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .back-btn,
+            .next-btn {
+                width: 100%;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab {
+                font-size: 15px;
+                padding: 10px 20px;
+            }
+
+            .terms-list > li {
                 flex-direction: column;
             }
 
@@ -379,23 +568,124 @@
                 margin-left: 20px;
             }
         }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 75px;
+            }
+
+            #logo {
+                height: 45px;
+            }
+
+            .hamburger {
+                width: 28px;
+                height: 22px;
+            }
+
+            nav {
+                width: 260px;
+                padding: 90px 25px 25px 25px;
+            }
+
+            nav a {
+                font-size: 15px;
+                padding: 12px 16px;
+            }
+
+            nav button {
+                font-size: 15px !important;
+                padding: 12px 16px !important;
+            }
+
+            .container {
+                width: calc(100% - 20px);
+                padding: 20px 15px;
+            }
+
+            .page-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                padding: 20px 15px;
+            }
+
+            .experience-section,
+            .terms-section {
+                padding: 15px 12px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+
+            .tabs {
+                gap: 8px;
+            }
+        }
+
+        /* Chrome, Edge, Safari */
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        /* Firefox */
+        * {
+            scrollbar-width: none;
+        }
+
+        /* IE / old Edge */
+        * {
+            -ms-overflow-style: none;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
+    <!-- HEADER -->
+    <header>
+        <div class="cont1">
             <div>
                 <a href="index.html">
-                    <img id='logo' src="assets/Logo.avif" height="70px" alt="">
+                    <img id='logo' src="assets/Logo.avif" alt="COV Logo">
                 </a>
             </div>
+
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="navMenu">
+                <a href="#membership">Membership</a>
+                <a href="#training">Training & Courses</a>
+                <a href="#events">Events</a>
+                <a href="about.html">About Us</a>
+                <a href="#osp">COV Sphere</a>
+                <a href="contact.html">Contact</a>
+                <a href="reg1.html">Register Now</a>
+                <button>Log In</button>
+            </nav>
         </div>
+    </header>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <h1 class="page-title">Registration Form</h1>
+
         <div class="tabs">
-            <a href='reg1.html' class="tab">Personal Details</a>
-            <a href='reg2.html' class="tab">Educational Details</a>
-            <a class="tab active" href="reg3.html">Work Experience</a>
+            <a class="tab" href="reg1.html">Personal Details</a>
+            <a class="tab" href="reg2.html">Educational Details</a>
+            <a href='reg3.html' class="tab active">Work Experience</a>
         </div>
+
         <div class="content">
             <!-- Work Experience Section -->
             <div class="experience-section">
@@ -458,6 +748,7 @@
                 </table>
                 <button class="add-row-btn" onclick="addExperienceRow()">+ Add Row</button>
             </div>
+
             <!-- Terms Section -->
             <div class="terms-section">
                 <h3 class="section-title">Terms</h3>
@@ -623,75 +914,4 @@
                         <div class="radio-group">
                             <div class="radio-option">
                                 <input type="radio" id="q11-yes" name="question11" value="yes">
-                                <label for="q11-yes">Yes</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="q11-no" name="question11" value="no" checked>
-                                <label for="q11-no">No</label>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="action-buttons">
-                <button class="back-btn" onclick="window.location.href='reg2.html'">Back</button>
-                <button class="next-btn" onclick="submitForm()">Submit</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let expRowCount = 2;
-
-        function addExperienceRow() {
-            expRowCount++;
-            const tbody = document.getElementById('experienceTableBody');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>
-                    <select>
-                        <option value="">Select</option>
-                        <option value="employment">Employment</option>
-                        <option value="practice">Practice</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Year"></td>
-                <td><input type="text" placeholder="From"></td>
-                <td><input type="text" placeholder="To"></td>
-                <td><input type="text" placeholder="Employer"></td>
-                <td><input type="text" placeholder="Designation"></td>
-                <td><input type="text" placeholder="Area"></td>
-                <td>
-                    <button class="upload-btn" onclick="document.getElementById('expUpload${expRowCount}').click()">Upload</button>
-                    <input type="file" id="expUpload${expRowCount}" accept=".pdf,.jpg,.png">
-                </td>
-            `;
-            tbody.appendChild(newRow);
-        }
-
-        function submitForm() {
-            // Collect all answers
-            const answers = {};
-            for (let i = 1; i <= 11; i++) {
-                const selected = document.querySelector(`input[name="question${i}"]:checked`);
-                if (selected) {
-                    answers[`question${i}`] = selected.value;
-                }
-            }
-
-            // Check sub-questions
-            const sub8a = document.querySelector('input[name="question8a"]:checked');
-            const sub8b = document.querySelector('input[name="question8b"]:checked');
-            if (sub8a) answers['question8a'] = sub8a.value;
-            if (sub8b) answers['question8b'] = sub8b.value;
-
-            console.log('Form submitted with answers:', answers);
-
-            // Redirect to home page
-            window.location.href = 'index.html';
-        }
-    </script>
-</body>
-
-</html>
+                                <label for="q11-yes">Yes

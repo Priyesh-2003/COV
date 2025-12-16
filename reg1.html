@@ -5,7 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>COV Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+        :root {
+            --primary: #002b5b;
+            --accent-teal: #00a6a6;
+            --soft-bg: #f2f9ff;
+            --highlight: #38b6ff;
+            --text-dark: #012a4a;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,56 +25,161 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0d4d6d 0%, #1a7a9e 50%, #4db8b8 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding-top: 100px;
+            overflow-x: hidden;
         }
 
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 1600px;
-            width: 100%;
-            padding: 40px;
+        /* ===== HEADER STYLES ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            box-shadow: none;
         }
 
-        .header {
+        .cont1 {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 35px;
+            max-width: 1520px;
+            margin: 0 auto;
+            padding: 15px 40px;
         }
 
         #logo {
             cursor: pointer;
             transition: transform 0.3s ease;
+            height: 70px;
         }
 
         #logo:hover {
             transform: scale(1.05);
         }
 
-        .logo-text {
+        nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: rgb(10, 8, 94);
+            font-size: 18px;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background-color: rgba(10, 8, 94, 0.12);
+            transform: translateY(-2px);
+        }
+
+        nav button {
+            margin-left: 15px;
+            padding: 8px 16px;
+            background-color: rgb(10, 8, 94);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 1520px;
+            width: calc(100% - 80px);
+            margin: 20px auto 40px;
+            padding: 40px;
+        }
+
+        .page-title {
             font-size: 32px;
             font-weight: bold;
             color: #0d4d6d;
-        }
-
-        .subtitle {
-            font-size: 12px;
-            color: #666;
-            margin-top: 2px;
+            margin-bottom: 35px;
+            text-align: center;
         }
 
         .tabs {
             display: flex;
             gap: 10px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
         .tab {
@@ -70,7 +187,7 @@
             border: none;
             background: #e8e8e8;
             color: #666;
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 500;
             cursor: pointer;
             border-radius: 6px;
@@ -111,7 +228,7 @@
         }
 
         .section-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             color: #0d4d6d;
             margin-bottom: 20px;
@@ -136,7 +253,7 @@
         }
 
         label {
-            font-size: 13px;
+            font-size: 18px;
             color: #555;
             margin-bottom: 6px;
             font-weight: 500;
@@ -148,7 +265,7 @@
             padding: 10px 14px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 18px;
             transition: all 0.3s ease;
             background: white;
         }
@@ -299,24 +416,214 @@
             display: none;
         }
 
-        @media (max-width: 768px) {
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
             .form-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 85px;
+            }
+
+            .cont1 {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            #logo {
+                height: 50px;
+                z-index: 1001;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: stretch !important;
+                padding: 100px 30px 30px 30px;
+                gap: 0 !important;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav a {
+                width: 100%;
+                padding: 15px 20px;
+                margin: 5px 0;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: left;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, 0.1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px);
+            }
+
+            nav button {
+                width: 100% !important;
+                margin: 20px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                background-color: var(--accent-teal);
+                transition: all 0.3s ease;
+                display: block !important;
+            }
+
+            nav button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 166, 166, 0.3);
+            }
+
+            .container {
+                width: calc(100% - 40px);
+                padding: 30px 20px;
+            }
+
+            .page-title {
+                font-size: 28px;
+                margin-bottom: 25px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .form-section,
+            .upload-section {
+                padding: 20px 15px;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
             }
 
-            .upload-grid,
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
             .document-uploads {
                 grid-template-columns: 1fr;
+            }
+
+            .doc-upload-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .doc-upload-btn {
+                width: 100%;
             }
 
             .tabs {
                 flex-wrap: wrap;
             }
 
+            .next-btn {
+                float: none;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 75px;
+            }
+
+            #logo {
+                height: 45px;
+            }
+
+            .hamburger {
+                width: 28px;
+                height: 22px;
+            }
+
+            nav {
+                width: 260px;
+                padding: 90px 25px 25px 25px;
+            }
+
+            nav a {
+                font-size: 15px;
+                padding: 12px 16px;
+            }
+
+            nav button {
+                font-size: 15px !important;
+                padding: 12px 16px !important;
+            }
+
+            .container {
+                width: calc(100% - 20px);
+                padding: 20px 15px;
+            }
+
+            .page-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                padding: 20px 15px;
+            }
+
+            .form-section,
+            .upload-section {
+                padding: 15px 12px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+
+            label {
+                font-size: 16px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            select {
+                font-size: 16px;
+            }
+
+            .preview-area {
+                width: 120px;
+                height: 120px;
+            }
+
+            .tabs {
+                gap: 8px;
+            }
+
+            .tab {
+                font-size: 15px;
+                padding: 10px 20px;
+            }
         }
 
         /* Chrome, Edge, Safari */
@@ -338,14 +645,40 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
+    <!-- HEADER -->
+    <header>
+        <div class="cont1">
             <div>
                 <a href="index.html">
-                     <img id='logo' src="assets/Logo.avif" height="70px" alt="">
+                    <img id='logo' src="assets/Logo.avif" alt="COV Logo">
                 </a>
             </div>
+
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="navMenu">
+                <a href="#membership">Membership</a>
+                <a href="#training">Training & Courses</a>
+                <a href="#events">Events</a>
+                <a href="about.html">About Us</a>
+                <a href="#osp">COV Sphere</a>
+                <a href="contact.html">Contact</a>
+                <a href="reg1.html">Register Now</a>
+                <button>Log In</button>
+            </nav>
         </div>
+    </header>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <h1 class="page-title">Registration Form</h1>
 
         <div class="tabs">
             <a class="tab active" href="reg1.html">Personal Details</a>
@@ -544,6 +877,7 @@
     </div>
 
     <script>
+        // Image preview function
         function previewImage(input, previewId) {
             const preview = document.getElementById(previewId);
             const file = input.files[0];
@@ -557,10 +891,41 @@
             }
         }
 
+        // Copy permanent address to correspondence address
         document.getElementById('sameAddress').addEventListener('change', function () {
             if (this.checked) {
-                // Copy permanent address to correspondence address
+                // Add logic to copy address fields
             }
+        });
+
+        // Hamburger menu functionality
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        hamburgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
+        });
+
+        menuOverlay.addEventListener('click', function() {
+            hamburgerBtn.classList.remove('active');
+            navMenu.classList.remove('active');
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking a nav link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
     </script>
 </body>
