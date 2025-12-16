@@ -622,3 +622,6 @@ textarea {
     font-size: 1.1em;
   }
 }
+body::-webkit-scrollbar {
+  display: none;
+}

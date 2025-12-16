@@ -1048,3 +1048,6 @@ nav a:hover {
     width: 100%;
   }
 }
+body::-webkit-scrollbar {
+  display: none;
+}

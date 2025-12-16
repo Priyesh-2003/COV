@@ -829,3 +829,6 @@ nav a:hover {
   background: transparent;
   box-shadow: none;
 }
+body::-webkit-scrollbar {
+  display: none;
+}

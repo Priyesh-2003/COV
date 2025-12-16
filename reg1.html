@@ -34,32 +34,33 @@
 
         /* ===== HEADER STYLES ===== */
         header {
+            background: transparent;
+            box-shadow: none;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: transparent;
-            box-shadow: none;
         }
 
-        .cont1 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .header-content {
             max-width: 1520px;
             margin: 0 auto;
             padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         #logo {
-            cursor: pointer;
-            transition: transform 0.3s ease;
             height: 70px;
-        }
-
-        #logo:hover {
-            transform: scale(1.05);
+            display: block;
         }
 
         nav {
@@ -85,7 +86,7 @@
             transform: translateY(-2px);
         }
 
-        nav button {
+        .login-btn {
             margin-left: 15px;
             padding: 8px 16px;
             background-color: rgb(10, 8, 94);
@@ -93,17 +94,19 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        nav button:hover {
+        .login-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         }
 
+        /* Hamburger Menu - HIDDEN ON DESKTOP */
         .hamburger {
             display: none;
+            /* Hidden by default on desktop */
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
@@ -647,20 +650,24 @@
 <body>
     <!-- HEADER -->
     <header>
-        <div class="cont1">
-            <div>
-                <a href="index.html">
-                    <img id='logo' src="assets/Logo.avif" alt="COV Logo">
-                </a>
+        <div class="header-content">
+            <div class="logo-container">
+                  <div>
+                    <a href="index.html">
+                        <img id='logo' src="assets/Logo.avif" height="70px" alt="">
+                    </a>
+                </div>
             </div>
 
-            <button class="hamburger" id="hamburgerBtn">
+            <!-- Hamburger Button -->
+            <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
             <nav id="navMenu">
+
                 <a href="#membership">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
@@ -668,7 +675,7 @@
                 <a href="#osp">COV Sphere</a>
                 <a href="contact.html">Contact</a>
                 <a href="reg1.html">Register Now</a>
-                <button>Log In</button>
+                <button class="login-btn">Log In</button>
             </nav>
         </div>
     </header>
@@ -903,14 +910,14 @@
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
 
-        hamburgerBtn.addEventListener('click', function() {
+        hamburgerBtn.addEventListener('click', function () {
             this.classList.toggle('active');
             navMenu.classList.toggle('active');
             menuOverlay.classList.toggle('active');
             document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
         });
 
-        menuOverlay.addEventListener('click', function() {
+        menuOverlay.addEventListener('click', function () {
             hamburgerBtn.classList.remove('active');
             navMenu.classList.remove('active');
             this.classList.remove('active');
@@ -920,7 +927,7 @@
         // Close menu when clicking a nav link
         const navLinks = navMenu.querySelectorAll('a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 hamburgerBtn.classList.remove('active');
                 navMenu.classList.remove('active');
                 menuOverlay.classList.remove('active');
