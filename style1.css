@@ -31,6 +31,7 @@ header {
 }
 
 .header-content {
+
   max-width: 1520px;
   margin: 0 auto;
   padding: 15px 40px;
@@ -54,7 +55,7 @@ nav {
   display: flex;
   gap: 10px;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 nav a {
@@ -146,7 +147,7 @@ nav a:hover {
 }
 
 /* Hero Section */
-.about-hero {
+/* .about-hero {
   background: linear-gradient(
     135deg,
     var(--primary) 0%,
@@ -158,8 +159,20 @@ nav a:hover {
   position: relative;
   overflow: hidden;
   z-index: 1;
+} */
+.about-hero {
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--accent-teal) 100%
+  );
+  color: white;
+  padding: 160px 40px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
 }
-
 .about-hero::before {
   content: "";
   position: absolute;
@@ -230,7 +243,7 @@ nav a:hover {
 }
 
 .story-content {
-  max-width: 1520px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -278,7 +291,7 @@ nav a:hover {
 }
 
 .wrapper {
-  max-width: 1520px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -487,7 +500,7 @@ nav a:hover {
 }
 
 .contact-container {
-  max-width: 1520px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -629,7 +642,7 @@ nav a:hover {
 }
 
 .footer-content {
-  max-width: 1520px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -815,7 +828,7 @@ nav a:hover {
 }
 /* ===== ABOUT PAGE TRANSPARENT HEADER ===== */
 .about-body header {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
