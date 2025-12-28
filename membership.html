@@ -29,13 +29,15 @@
             background: var(--white);
             color: var(--text-dark);
             overflow-x: hidden;
+            /* changed */
+            /* padding-top: 100px; */
         }
 
         /* ===== HEADER STYLES ===== */
         header {
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
-            position: fixed;
+            position: relative;
             top: 0;
             left: 0;
             right: 0;
@@ -102,8 +104,10 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         }
 
+        /* Hamburger Menu - HIDDEN ON DESKTOP */
         .hamburger {
             display: none;
+            /* Hidden by default on desktop */
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
@@ -136,6 +140,18 @@
 
         .hamburger.active span:nth-child(3) {
             transform: translateY(-10.5px) rotate(-45deg);
+
+            nav {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                flex-wrap: nowrap;
+            }
+
+            nav a,
+            nav button {
+                white-space: nowrap;
+            }
         }
 
         .menu-overlay {
@@ -274,6 +290,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -569,12 +586,11 @@
         <div class="header-content">
             <div class="logo-container">
                 <div>
-                    <a href="index.html">
-                        <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
-                    </a>
+                    <img id='logo' src="assets/Logo.avif" height="70px" alt="">
                 </div>
             </div>
 
+            <!-- Hamburger Button -->
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -582,7 +598,8 @@
             </button>
 
             <nav id="navMenu">
-                <a href="#membership">Membership</a>
+
+                <a href="membership.html">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
                 <a href="about.html">About Us</a>
@@ -601,7 +618,9 @@
     <section class="hero-section">
         <div class="hero-content">
             <h1>Membership at COV</h1>
-            <p>At COV, membership is more than a credential—it's a commitment to excellence, integrity, and lifelong learning in the valuation profession. Whether you're a student, an emerging practitioner, or a seasoned expert, we offer a pathway tailored to your stage of professional growth.</p>
+            <p>At COV, membership is more than a credential—it's a commitment to excellence, integrity, and lifelong
+                learning in the valuation profession. Whether you're a student, an emerging practitioner, or a seasoned
+                expert, we offer a pathway tailored to your stage of professional growth.</p>
         </div>
     </section>
 
@@ -609,7 +628,8 @@
     <section class="categories-section">
         <div class="categories-container">
             <h2 class="section-title">Membership Categories</h2>
-            <p class="section-subtitle">COV's membership structure is designed to support you at every stage of your professional journey.</p>
+            <p class="section-subtitle">COV's membership structure is designed to support you at every stage of your
+                professional journey.</p>
 
             <div class="categories-tabs">
                 <button class="tab-btn active" data-tab="student">Student</button>
@@ -622,7 +642,8 @@
             <!-- Student Tab -->
             <div class="tab-content active" id="student">
                 <h3>Student Member</h3>
-                <p>Ideal for current students or recent graduates pursuing academic programmes related to valuation, finance, economics, law, engineering, or real estate.</p>
+                <p>Ideal for current students or recent graduates pursuing academic programmes related to valuation,
+                    finance, economics, law, engineering, or real estate.</p>
                 <ul>
                     <li>Provides early exposure to the professional valuation ecosystem</li>
                     <li>Access to foundational learning resources, events, and mentorship</li>
@@ -635,9 +656,11 @@
             <!-- Affiliate Tab -->
             <div class="tab-content" id="affiliate">
                 <h3>Affiliate Member</h3>
-                <p>Suited for early-career professionals or individuals transitioning into valuation, who have foundational knowledge or a demonstrated interest in the profession.</p>
+                <p>Suited for early-career professionals or individuals transitioning into valuation, who have
+                    foundational knowledge or a demonstrated interest in the profession.</p>
                 <ul>
-                    <li>Ideal for those seeking structured pathways toward becoming Chartered Members or Registered Valuers</li>
+                    <li>Ideal for those seeking structured pathways toward becoming Chartered Members or Registered
+                        Valuers</li>
                     <li>Access to foundational CPD programmes, industry events, and mentorship</li>
                     <li>Serves as a launchpad for professional certification and practical exposure</li>
                     <li>Sub-categories include:
@@ -658,7 +681,8 @@
             <!-- Chartered Tab -->
             <div class="tab-content" id="chartered">
                 <h3>Chartered Member</h3>
-                <p>This is the core professional grade of membership, awarded to those who meet rigorous standards of competency, ethics, and practical experience.</p>
+                <p>This is the core professional grade of membership, awarded to those who meet rigorous standards of
+                    competency, ethics, and practical experience.</p>
                 <ul>
                     <li>Requires formal qualification and experience in valuation or allied domains</li>
                     <li>Recognised through post-nominal: CM-COV</li>
@@ -671,10 +695,12 @@
             <!-- Fellow Tab -->
             <div class="tab-content" id="fellow">
                 <h3>Fellow Member</h3>
-                <p>Reserved for accomplished professionals with substantial experience, contributions to the valuation community, and a reputation for integrity and leadership.</p>
+                <p>Reserved for accomplished professionals with substantial experience, contributions to the valuation
+                    community, and a reputation for integrity and leadership.</p>
                 <ul>
                     <li>Recognised through post-nominal: FM-COV</li>
-                    <li>Eligible to chair committees, lead technical discussions, and represent COV in global forums</li>
+                    <li>Eligible to chair committees, lead technical discussions, and represent COV in global forums
+                    </li>
                     <li>Mentors junior members and contributes to setting benchmarks for the profession</li>
                     <li>Acknowledged for research, innovation, or long-standing impact in valuation practice</li>
                 </ul>
@@ -684,7 +710,8 @@
             <!-- Institutional Tab -->
             <div class="tab-content" id="institutional">
                 <h3>Institutional Member</h3>
-                <p>Open to valuation firms, academic institutions, industry bodies, and organisations engaged in or supporting the valuation profession.</p>
+                <p>Open to valuation firms, academic institutions, industry bodies, and organisations engaged in or
+                    supporting the valuation profession.</p>
                 <ul>
                     <li>Encourages organisational participation in COV's professional ecosystem</li>
                     <li>Access to team-wide CPD opportunities, joint events, and research partnerships</li>
@@ -717,7 +744,8 @@
                 <div class="benefit-card">
                     <div class="benefit-number">3</div>
                     <h3>Global Standards & Tools</h3>
-                    <p>Stay updated with the latest valuation methodologies, IVS-aligned practices, and digital tools.</p>
+                    <p>Stay updated with the latest valuation methodologies, IVS-aligned practices, and digital tools.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
