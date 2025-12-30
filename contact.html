@@ -10,37 +10,47 @@
 </head>
 
 <body>
-    <!-- Header - EXACT MATCH WITH INDEX.HTML -->
+    <!-- ==================== HEADER - BOD STYLE ==================== -->
     <header>
         <div class="header-content">
+            <!-- Logo Section - Left -->
             <div class="logo-container">
-                <div>
-                    <a href="index.html">
-                        <img id='logo' src="assets/Logo.avif" height="70px" alt="">
-                    </a>
-                </div>
+                <a href="index.html">
+                    <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
+                </a>
             </div>
 
-            <!-- Hamburger Button -->
+            <!-- Hamburger Menu - Mobile Only -->
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
+            <!-- Main Navigation - Center -->
             <nav id="navMenu">
                 <a href="membership.html">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
-                <a href="about.html">About Us</a>
+                <div class="nav-item">
+                    <a href="about.html">About Us <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown">
+                        <a href="about.html#our-story">Our Story</a>
+                        <a href="BOD.html">Board of Directors</a>
+                    </div>
+                </div>
                 <a href="covsphere.html">COV Sphere</a>
                 <a href="contact.html">Contact</a>
-                <a href="reg1.html">Register Now</a>
-                <a href="BOD.html">Board Of Directors</a>
-                <button class="login-btn">Login</button>
             </nav>
+
+            <!-- Right Side Buttons -->
+            <div class="nav-right">
+                <a href="reg1.html" class="register-btn">Register Now</a>
+                <button class="login-btn">Login</button>
+            </div>
         </div>
     </header>
+    <!-- ==================== END HEADER ==================== -->
 
     <!-- Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -66,12 +76,12 @@
 
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" placeholder='Email'"email" required>
+                        <input type="email" id="email" placeholder="Email" name="email" required>
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder='Phone' name="phone">
+                        <input type="tel" id="phone" placeholder="Phone" name="phone">
                     </div>
 
                     <div class="form-group">
@@ -81,7 +91,7 @@
 
                     <div class="form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" placeholder="Message"></textarea>
+                        <textarea id="message" name="message" placeholder="Message" required></textarea>
                     </div>
 
                     <button type="submit" class="submit-btn">Send Message</button>
@@ -177,35 +187,68 @@
     </footer>
 
     <script>
-        // Hamburger menu functionality - EXACT MATCH WITH INDEX.HTML
+        // ==================== NAVIGATION SCRIPT ====================
+        
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('active');
             navMenu.classList.toggle('active');
             menuOverlay.classList.toggle('active');
-            document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
+            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
         });
 
-        menuOverlay.addEventListener('click', () => {
+        menuOverlay.addEventListener('click', function () {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
+            this.classList.remove('active');
             document.body.style.overflow = '';
         });
 
-        // Close menu when clicking nav links
         const navLinks = navMenu.querySelectorAll('a');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function (e) {
+                // Don't close menu if clicking dropdown parent on mobile
+                if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) {
+                    return;
+                }
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.style.overflow = '';
             });
         });
+
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            const navItem = document.querySelector('.nav-item');
+            if (navItem) {
+                const navItemLink = navItem.querySelector('a');
+                
+                navItemLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navItem.classList.toggle('mobile-active');
+                });
+            }
+        }
+
+        // Clone right buttons into mobile menu
+        const navRight = document.querySelector('.nav-right');
+        if (navRight && window.innerWidth <= 768) {
+            const registerBtn = navRight.querySelector('.register-btn');
+            const loginBtn = navRight.querySelector('.login-btn');
+            
+            if (registerBtn && loginBtn) {
+                const registerClone = registerBtn.cloneNode(true);
+                const loginClone = loginBtn.cloneNode(true);
+                navMenu.appendChild(registerClone);
+                navMenu.appendChild(loginClone);
+            }
+        }
+
+        // ==================== END NAVIGATION SCRIPT ====================
     </script>
 
 </body>

@@ -1,4 +1,4 @@
-// Hamburger Menu Toggle
+// ==================== NAVIGATION & HAMBURGER MENU ====================
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const menuOverlay = document.getElementById('menuOverlay');
@@ -19,10 +19,15 @@ function toggleMenu() {
 hamburger.addEventListener('click', toggleMenu);
 menuOverlay.addEventListener('click', toggleMenu);
 
-// Close menu when clicking on a nav link
+// Close menu when clicking on a nav link (but not dropdown parent)
 const navLinks = navMenu.querySelectorAll('a');
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+        // Don't close menu if clicking dropdown parent on mobile
+        if (window.innerWidth <= 768 && link.parentElement.classList.contains('nav-item')) {
+            return; // Let the mobile dropdown toggle handle this
+        }
+        
         if (window.innerWidth <= 768) {
             toggleMenu();
         }
@@ -36,7 +41,35 @@ window.addEventListener('resize', () => {
     }
 });
 
-// Changing text animation in hero section
+// ==================== MOBILE DROPDOWN TOGGLE ====================
+// Mobile dropdown toggle for "About Us"
+if (window.innerWidth <= 768) {
+    const navItem = document.querySelector('.nav-item');
+    if (navItem) {
+        const navItemLink = navItem.querySelector('a');
+        
+        navItemLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            navItem.classList.toggle('mobile-active');
+        });
+    }
+}
+
+// Clone right buttons into mobile menu
+const navRight = document.querySelector('.nav-right');
+if (navRight && window.innerWidth <= 768) {
+    const registerBtn = navRight.querySelector('.register-btn');
+    const loginBtn = navRight.querySelector('.login-btn');
+    
+    if (registerBtn && loginBtn) {
+        const registerClone = registerBtn.cloneNode(true);
+        const loginClone = loginBtn.cloneNode(true);
+        navMenu.appendChild(registerClone);
+        navMenu.appendChild(loginClone);
+    }
+}
+
+// ==================== HERO SECTION TEXT ANIMATION ====================
 const texts = [
     "Excellence & Innovation",
     "Professional Standards",
@@ -47,12 +80,14 @@ let currentIndex = 0;
 const changingText = document.getElementById('changingText');
 
 function changeText() {
-    changingText.style.opacity = '0';
-    setTimeout(() => {
-        currentIndex = (currentIndex + 1) % texts.length;
-        changingText.textContent = texts[currentIndex];
-        changingText.style.opacity = '1';
-    }, 500);
+    if (changingText) {
+        changingText.style.opacity = '0';
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % texts.length;
+            changingText.textContent = texts[currentIndex];
+            changingText.style.opacity = '1';
+        }, 500);
+    }
 }
 
 if (changingText) {
@@ -60,7 +95,7 @@ if (changingText) {
     setInterval(changeText, 3000);
 }
 
-// Counter animation
+// ==================== COUNTER ANIMATION ====================
 const counters = document.querySelectorAll('.stat-number[data-target]');
 
 const animateCounter = (counter) => {

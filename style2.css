@@ -27,6 +27,12 @@ body {
   line-height: 1.6;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==================== HEADER STYLES - BOD MATCH ==================== */
+
 header {
   background: var(--white);
   box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
@@ -34,6 +40,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -44,12 +51,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 15px;
+  flex-shrink: 0;
 }
 
 #logo {
@@ -57,11 +66,15 @@ header {
   display: block;
 }
 
+/* ==================== MAIN NAVIGATION - CENTER ==================== */
+
 nav {
   display: flex;
   gap: 10px;
   align-items: center;
   flex-wrap: nowrap;
+  justify-content: center;
+  flex: 1;
 }
 
 nav a {
@@ -80,24 +93,107 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-.login-btn {
-  margin-left: 15px;
+/* Dropdown Styles */
+.nav-item {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 43, 91, 0.15);
+  min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1100;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.nav-item:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 15px;
+}
+
+.dropdown a {
+  display: block;
+  padding: 12px 20px;
+  color: var(--primary);
+  font-size: 16px;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown a:hover {
+  background-color: rgba(0, 166, 166, 0.1);
+  border-left-color: var(--accent-teal);
+  transform: translateX(5px);
+}
+
+.dropdown-arrow {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* ==================== RIGHT SIDE BUTTONS ==================== */
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.register-btn {
   padding: 8px 16px;
+  background-color: transparent;
+  color: rgb(10, 8, 94);
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  transition: 0.3s ease-in-out;
+  white-space: nowrap;
+}
+
+.register-btn:hover {
+  background-color: rgba(10, 8, 94, 0.12);
+  transform: translateY(-2px);
+}
+
+.login-btn {
+  padding: 8px 20px;
   background-color: rgb(10, 8, 94);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .login-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
 }
 
-/* Hamburger Menu */
+/* ==================== HAMBURGER & MOBILE MENU ==================== */
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -152,7 +248,8 @@ nav a:hover {
   opacity: 1;
 }
 
-/* Hero Section - ADJUSTED FOR FIXED HEADER */
+/* ==================== HERO SECTION ==================== */
+
 .hero {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
   color: white;
@@ -215,14 +312,15 @@ nav a:hover {
   z-index: 2;
 }
 
-/* Main Container */
+/* ==================== MAIN CONTAINER ==================== */
+
 .container {
   max-width: 1520px;
   margin: 0 auto;
   padding: 60px 40px 80px;
 }
 
-/* Grid */
+/* Contact Grid */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -361,7 +459,7 @@ textarea {
   color: var(--highlight);
 }
 
-/* Map */
+/* Map Section */
 .map-section {
   background: white;
   padding: 40px;
@@ -391,7 +489,7 @@ textarea {
   font-family: "Poppins", sans-serif;
 }
 
-/* Social */
+/* Social Section */
 .social-section {
   background: white;
   padding: 50px 40px;
@@ -445,7 +543,8 @@ textarea {
   border-color: var(--accent-teal);
 }
 
-/* FOOTER */
+/* ==================== FOOTER ==================== */
+
 .footer {
   background: #001a33;
   padding: 25px 40px;
@@ -486,7 +585,8 @@ textarea {
   gap: 20px;
 }
 
-/* Responsive Design */
+/* ==================== RESPONSIVE DESIGN ==================== */
+
 @media (max-width: 1024px) {
   .contact-grid {
     grid-template-columns: 1fr;
@@ -494,6 +594,10 @@ textarea {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-top: 0;
+  }
+
   .header-content {
     padding: 15px 20px;
     flex-wrap: wrap;
@@ -508,6 +612,11 @@ textarea {
   .hamburger {
     display: flex;
     margin-left: auto;
+  }
+
+  /* Hide right buttons on mobile - they'll be in the menu */
+  .nav-right {
+    display: none;
   }
 
   nav {
@@ -549,9 +658,62 @@ textarea {
     transform: translateX(5px);
   }
 
+  /* Mobile Dropdown */
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-item > a {
+    width: 100%;
+  }
+
+  .dropdown {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    background: rgba(0, 166, 166, 0.05);
+    margin: 5px 0;
+    border-radius: 8px;
+    max-height: 0;
+    opacity: 0;
+    visibility: visible;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .nav-item.mobile-active .dropdown {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 8px;
+  }
+
+  .dropdown a {
+    padding: 10px 20px 10px 30px;
+    font-size: 15px;
+  }
+
+  .dropdown-arrow {
+    float: right;
+  }
+
+  .nav-item.mobile-active .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Mobile buttons inside nav */
+  .register-btn {
+    width: 100% !important;
+    margin: 15px 0 0 0 !important;
+    padding: 15px 20px !important;
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: center;
+    display: block !important;
+  }
+
   .login-btn {
     width: 100% !important;
-    margin: 20px 0 0 0 !important;
+    margin: 10px 0 0 0 !important;
     padding: 15px 20px !important;
     border-radius: 12px;
     font-size: 16px;
@@ -625,7 +787,4 @@ textarea {
     height: 45px;
     font-size: 1.1em;
   }
-}
-body::-webkit-scrollbar {
-  display: none;
 }

@@ -9,35 +9,33 @@
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
-        
-:root {
-  --primary: #002b5b;
-  --accent-teal: #00a6a6;
-  --soft-bg: #f2f9ff;
-  --highlight: #38b6ff;
-  --text-dark: #012a4a;
-  --white: #ffffff;
-  --light-gray: #e8f4f8;
-  --hero-height: min(85vh, 600px);
-  --header-offset: 100px;
-}
+        :root {
+            --primary: #002b5b;
+            --accent-teal: #00a6a6;
+            --soft-bg: #f2f9ff;
+            --highlight: #38b6ff;
+            --text-dark: #012a4a;
+            --white: #ffffff;
+            --light-gray: #e8f4f8;
+            --hero-height: min(85vh, 600px);
+            --header-offset: 100px;
+        }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
-  overflow-x: hidden;
-  color: var(--text-dark);
-  background: var(--white);
-  line-height: 1.6;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.6;
+        }
 
-        /* ===== HEADER STYLES ===== */
+        /* ==================== HEADER STYLES - BOD MATCH ==================== */
         header {
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
@@ -45,6 +43,7 @@ body {
             top: 0;
             left: 0;
             right: 0;
+            width: 100%;
             z-index: 1000;
         }
 
@@ -55,12 +54,14 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
+            width: 100%;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            flex-shrink: 0;
         }
 
         #logo {
@@ -73,6 +74,8 @@ body {
             gap: 10px;
             align-items: center;
             flex-wrap: nowrap;
+            justify-content: center;
+            flex: 1;
         }
 
         nav a {
@@ -91,24 +94,102 @@ body {
             transform: translateY(-2px);
         }
 
-        .login-btn {
-            margin-left: 15px;
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 43, 91, 0.15);
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1100;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 15px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary);
+            font-size: 16px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown a:hover {
+            background-color: rgba(0, 166, 166, 0.1);
+            border-left-color: var(--accent-teal);
+            transform: translateX(5px);
+        }
+
+        .dropdown-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .register-btn-header {
             padding: 8px 16px;
+            background-color: transparent;
+            color: rgb(10, 8, 94);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 400;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .register-btn-header:hover {
+            background-color: rgba(10, 8, 94, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .login-btn {
+            padding: 8px 20px;
             background-color: rgb(10, 8, 94);
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 25px;
             cursor: pointer;
             font-size: 16px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .login-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
         }
 
-        /* Hamburger Menu - HIDDEN ON DESKTOP */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -163,7 +244,7 @@ body {
             opacity: 1;
         }
 
-        /* ===== HERO SECTION - EXACT COPY FROM CONTACT PAGE ===== */
+        /* ===== HERO SECTION ===== */
         .hero-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
             color: white;
@@ -315,7 +396,6 @@ body {
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -493,6 +573,10 @@ body {
                 margin-left: auto;
             }
 
+            .nav-right {
+                display: none;
+            }
+
             nav {
                 position: fixed;
                 top: 0;
@@ -532,9 +616,60 @@ body {
                 transform: translateX(5px);
             }
 
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-item > a {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 166, 166, 0.05);
+                margin: 5px 0;
+                border-radius: 8px;
+                max-height: 0;
+                opacity: 0;
+                visibility: visible;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-item.mobile-active .dropdown {
+                max-height: 200px;
+                opacity: 1;
+                margin-top: 8px;
+            }
+
+            .dropdown a {
+                padding: 10px 20px 10px 30px;
+                font-size: 15px;
+            }
+
+            .dropdown-arrow {
+                float: right;
+            }
+
+            .nav-item.mobile-active .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .register-btn-header {
+                width: 100% !important;
+                margin: 15px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: center;
+                display: block !important;
+            }
+
             .login-btn {
                 width: 100% !important;
-                margin: 20px 0 0 0 !important;
+                margin: 10px 0 0 0 !important;
                 padding: 15px 20px !important;
                 border-radius: 12px;
                 font-size: 16px;
@@ -618,11 +753,10 @@ body {
         <div class="header-content">
             <div class="logo-container">
                 <a href="index.html">
-                        <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
-                    </a>
+                    <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
+                </a>
             </div>
 
-            <!-- Hamburger Button -->
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -630,23 +764,30 @@ body {
             </button>
 
             <nav id="navMenu">
-
                 <a href="membership.html">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
-                <a href="about.html">About Us</a>
+                <div class="nav-item">
+                    <a href="about.html">About Us <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown">
+                        <a href="about.html#our-story">Our Story</a>
+                        <a href="BOD.html">Board of Directors</a>
+                    </div>
+                </div>
                 <a href="covsphere.html">COV Sphere</a>
                 <a href="contact.html">Contact</a>
-                <a href="reg1.html">Register Now</a>
-                <a href="BOD.html">Board Of Directors</a>
-                <button class="login-btn">Login</button>
             </nav>
+
+            <div class="nav-right">
+                <a href="reg1.html" class="register-btn-header">Register Now</a>
+                <button class="login-btn">Login</button>
+            </div>
         </div>
     </header>
 
     <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- HERO SECTION - UPDATED WITH GREENISH GRADIENT -->
+    <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="hero-content">
             <h1>Membership at COV</h1>
@@ -837,7 +978,10 @@ body {
 
         const navLinks = navMenu.querySelectorAll('a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function () {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) {
+                    return;
+                }
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 menuOverlay.classList.remove('active');
@@ -845,20 +989,40 @@ body {
             });
         });
 
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            const navItem = document.querySelector('.nav-item');
+            if (navItem) {
+                const navItemLink = navItem.querySelector('a');
+                navItemLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navItem.classList.toggle('mobile-active');
+                });
+            }
+        }
+
+        // Clone right buttons into mobile menu
+        const navRight = document.querySelector('.nav-right');
+        if (navRight && window.innerWidth <= 768) {
+            const registerBtn = navRight.querySelector('.register-btn-header');
+            const loginBtn = navRight.querySelector('.login-btn');
+            if (registerBtn && loginBtn) {
+                const registerClone = registerBtn.cloneNode(true);
+                const loginClone = loginBtn.cloneNode(true);
+                navMenu.appendChild(registerClone);
+                navMenu.appendChild(loginClone);
+            }
+        }
+
         // Tab functionality
         const tabButtons = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
 
         tabButtons.forEach(button => {
             button.addEventListener('click', function () {
-                // Remove active class from all buttons and contents
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
-
-                // Add active class to clicked button
                 this.classList.add('active');
-
-                // Show corresponding content
                 const tabId = this.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
             });
