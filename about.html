@@ -11,36 +11,35 @@
 </head>
 
 <body class="about-body">
-
-    <header>
-        <div class="header-content">
+ <div class="header-content">
             <div class="logo-container">
-               <div>
-                    <a href="index.html">
-                        <img id='logo' src="assets/Logo.avif" height="70px" alt="">
-                    </a>
-                </div>
+                <a href="index.html">
+                    <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
+                </a>
             </div>
-
-            <!-- Hamburger Button -->
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
             <nav id="navMenu">
-
                 <a href="membership.html">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
-                <a href="about.html">About Us</a>
+                <div class="nav-item">
+                    <a href="about.html">About Us <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown">
+                        <a href="about.html#our-story">Our Story</a>
+                        <a href="BOD.html">Board of Directors</a>
+                    </div>
+                </div>
                 <a href="covsphere.html">COV Sphere</a>
                 <a href="contact.html">Contact</a>
-                <a href="reg1.html">Register Now</a>
-                 <a href="BOD.html">Board Of Directors</a>
-                <button class="login-btn">Login</button>
             </nav>
+            <div class="nav-right">
+                <a href="reg1.html" class="register-btn">Register Now</a>
+                <button class="login-btn">Login</button>
+            </div>
         </div>
     </header>
     

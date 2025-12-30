@@ -27,77 +27,157 @@ body {
   background: var(--white);
   line-height: 1.6;
 }
-
 header {
-  background: var(--white);
-  box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 43, 91, .1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000
+        }
 
-.header-content {
-  max-width: 1520px;
-  margin: 0 auto;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        .header-content {
+            max-width: 1520px;
+            margin: 0 auto;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px
+        }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0
+        }
 
-#logo {
-  height: 70px;
-  display: block;
-}
+        #logo {
+            height: 70px;
+            display: block
+        }
 
-nav {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: nowrap;
-}
+        nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: center;
+            flex: 1
+        }
 
-nav a {
-  position: relative;
-  padding: 8px 16px;
-  border-radius: 20px;
-  text-decoration: none;
-  color: rgb(10, 8, 94);
-  font-size: 18px;
-  transition: 0.3s ease-in-out;
-  white-space: nowrap;
-}
+        nav a {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: rgb(10, 8, 94);
+            font-size: 18px;
+            transition: .3s ease-in-out;
+            white-space: nowrap
+        }
 
-nav a:hover {
-  background-color: rgba(10, 8, 94, 0.12);
-  transform: translateY(-2px);
-}
+        nav a:hover {
+            background-color: rgba(10, 8, 94, .12);
+            transform: translateY(-2px)
+        }
 
-.login-btn {
-  margin-left: 15px;
-  padding: 8px 16px;
-  background-color: rgb(10, 8, 94);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .nav-item {
+            position: relative
+        }
 
-.login-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-}
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 43, 91, .15);
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s cubic-bezier(.68, -.55, .265, 1.55);
+            z-index: 1100;
+            margin-top: 10px;
+            overflow: hidden
+        }
 
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 15px
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary);
+            font-size: 16px;
+            border-radius: 0;
+            transition: all .3s ease;
+            border-left: 3px solid transparent
+        }
+
+        .dropdown a:hover {
+            background-color: rgba(0, 166, 166, .1);
+            border-left-color: var(--accent-teal);
+            transform: translateX(5px)
+        }
+
+        .dropdown-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 12px;
+            transition: transform .3s ease
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg)
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0
+        }
+
+        .register-btn {
+            padding: 8px 16px;
+            background-color: transparent;
+            color: rgb(10, 8, 94);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 400;
+            transition: .3s ease-in-out;
+            white-space: nowrap
+        }
+
+        .register-btn:hover {
+            background-color: rgba(10, 8, 94, .12);
+            transform: translateY(-2px)
+        }
+
+        .login-btn {
+            padding: 8px 20px;
+            background-color: rgb(10, 8, 94);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all .3s ease;
+            white-space: nowrap
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, .4)
+        }
 /* Hamburger Menu */
 .hamburger {
   display: none;
